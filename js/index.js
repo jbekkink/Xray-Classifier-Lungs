@@ -1,7 +1,7 @@
 import Portis from "@portis/web3";
 import { IExec, utils } from "iexec";
 import axios from 'axios';
-import {displayPreviousDeals, addNewResult, enableDownloadButton} from './tools';
+import {spawnProgressBar, updateProgressBar, displayPreviousDeals, addNewResult, enableDownloadButton} from './tools';
 
 const networkOutput = document.getElementById("network-output");
 const myForm = document.getElementById('myForm');
@@ -39,6 +39,7 @@ const initStorage = (iexec) => async () => {
 
 const buyComputation = (iexec, ipfs_url) => async () => {
   try {
+    updateProgressBar('40%', 'Complete order...');
     const appAddress = '0x8326dec6de9546046de50b9fd77703ea9794f399';
     const category = 0;
     const workerpool = '0x5210cD9C57546159Ac60DaC17B3e6cDF48674FBD';
@@ -76,6 +77,7 @@ const buyComputation = (iexec, ipfs_url) => async () => {
       requestorder: requestOrder,
       workerpoolorder: workerpoolOrder
     }); 
+    updateProgressBar('70%', 'Executing computation...');
     refreshUser(iexec)();
     
     const deal = await iexec.deal.show(res.dealid);
@@ -172,6 +174,7 @@ const init = async () => {
         },
         data : data
       };
+      spawnProgressBar();
       const res = await axios(config);
       const cid = res.data.IpfsHash;
       const multiaddr=`/ipfs/${cid}`;
@@ -183,11 +186,12 @@ const init = async () => {
           throw Error(`Failed to load uploaded file at ${ipfs_url}`);
       }    
       }); 
-
+      updateProgressBar('25%', 'Image uploaded...');
       const deal = await buyComputation(iexec, ipfs_url)();
       uploadbutton.disabled = false;
       await addNewResult(iexec, deal);
       await enableDownloadButton(iexec, deal);
+      updateProgressBar('100%', 'Result is ready!');
       
     });
     uploadbutton.disabled = false;
