@@ -160,7 +160,7 @@ const init = async () => {
     myForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       uploadbutton.disabled = true;
-
+      const file = myFile.files[0];
       var data = new FormData();
       data.append('file', file);
       var config = {
