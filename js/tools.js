@@ -146,4 +146,24 @@ async function enableDownloadButton(iexec, deal) {
   }
 }
 
-export {showPreviousDeals, displayPreviousDeals, addNewResult, enableDownloadButton, downloadResults};
+function spawnProgressBar() {
+    const div = document.getElementById('myProgress');
+    const status = document.createElement('h2');
+    const bar = document.createElement('div');
+    bar.setAttribute('id','progressBar');
+
+    status.innerHTML = 'Uploading Image...';
+    div.appendChild(status);
+    div.appendChild(bar);
+}
+
+function updateProgressBar(input_width, status_text) {
+    const status = document.querySelector('#myProgress h2');
+    const bar = document.querySelector('#progressBar');
+    console.log(bar);
+    status.innerHTML = status_text;
+    bar.style.width = input_width;
+    bar.innerHTML= input_width;
+}
+
+export {spawnProgressBar, updateProgressBar, showPreviousDeals, displayPreviousDeals, addNewResult, enableDownloadButton, downloadResults};
