@@ -4,7 +4,9 @@
 0x8326dec6de9546046de50b9fd77703ea9794f399
 
 # DISCLAIMER: CURRENTLY ONLY WORKS ON THE PROVIDED DATASET 
-Using images from the web will most likely give you false results)!!!
+Using images from the web will most likely give you false results!
+
+Download the full dataset here: https://drive.google.com/file/d/1JU4d7waBVl5RYpNZ729PtCzqLOIUtuP6/view?usp=sharing
 
 # STEPS
 
