@@ -109,6 +109,20 @@ button:disabled {
     gap: 100px; 
 }
 
+#myProgress {
+    width: 100%; 
+}
+
+#progressBar {
+    width: 10%;
+    height: 40px;
+    background-color:#FFE600;
+    width: 5%; 
+    color: white; 
+    text-align: center;
+    line-height: 40px; 
+}
+
 .results {
     display: flex;
     flex-direction: column;
@@ -120,13 +134,6 @@ button:disabled {
 }
 
 .display-results {
-    display: grid; 
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 2em; 
-    max-width: 100%;
-}
-
-.previous-results {
     display: grid; 
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 2em; 
